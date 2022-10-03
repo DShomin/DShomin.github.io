@@ -69,7 +69,7 @@ curl https://s3.us-west-2.amazonaws.com/bentoml.com/stable_diffusion_bentoml/sd_
 
 ## Stable Diffusion Betno 구축
 
-모델을 RESTful API로써 serve하기 위해 우리는 BentoML service를 만들것입니다. 다음 예제는 예측을 위한 single precision 모델과 [service.py](http://service.py) 모듈을 사용하여 비즈니스 로직으로 서비스를 결합합니다. `@svc.api` 데코레이션을 활용하여 함수를 APIs로 노출시킬 수 있습니다. 뿐만아니라 input과 output의 type을 지정해줄 수 있습니다. 예를 들어, `txt2img` 앤드포인트는 `JSON` 을 입력을 받아 `Image` 출력을 반환하는 반면 `img2img` 앤드포인트는 `Image` 와 `JSON` 을 입력으로 받아 출력으로 `Image` 를 반환합니다.
+모델을 RESTful API로써 serve하기 위해 우리는 BentoML service를 만들것입니다. 다음 예제는 예측을 위한 single precision 모델과 [service.py](https://github.com/bentoml/stable-diffusion-bentoml/blob/main/fp32/service.py) 모듈을 사용하여 비즈니스 로직으로 서비스를 결합합니다. `@svc.api` 데코레이션을 활용하여 함수를 APIs로 노출시킬 수 있습니다. 뿐만아니라 input과 output의 type을 지정해줄 수 있습니다. 예를 들어, `txt2img` 앤드포인트는 `JSON` 을 입력을 받아 `Image` 출력을 반환하는 반면 `img2img` 앤드포인트는 `Image` 와 `JSON` 을 입력으로 받아 출력으로 `Image` 를 반환합니다.
 
 ```python
 @svc.api(input=JSON(), output=Image())
