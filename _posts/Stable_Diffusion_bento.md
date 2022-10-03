@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "나만의 Stable Diffusion 서비스 배포"
+date:   2022-10-03 20:42:00 +0900
+categories: BentoML
+---
+
 # 나만의 Stable Diffusion 서비스 배포
 
 [Stable Diffusion](https://stability.ai/blog/stable-diffusion-public-release)은 [stability.ai](http://stability.ai/)에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.
