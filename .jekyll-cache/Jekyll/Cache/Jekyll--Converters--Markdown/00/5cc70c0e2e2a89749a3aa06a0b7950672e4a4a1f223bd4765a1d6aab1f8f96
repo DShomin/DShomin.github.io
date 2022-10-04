@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-04T13:07:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Lomit tech blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">나만의 Stable Diffusion 서비스 배포</title><link href="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html" rel="alternate" type="text/html" title="나만의 Stable Diffusion 서비스 배포" /><published>2022-10-03T20:42:00+09:00</published><updated>2022-10-03T20:42:00+09:00</updated><id>http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento</id><content type="html" xml:base="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"><![CDATA[<p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
+I"hJ<p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
 
 <h2 id="stable-diffusion을-왜-onlie으로-불러오는-것인가">Stable Diffusion을 왜 Onlie으로 불러오는 것인가?</h2>
 
@@ -176,4 +176,5 @@ curl https://s3.us-west-2.amazonaws.com/bentoml.com/stable_diffusion_bentoml/sd_
 
 <h1 id="reference">Reference</h1>
 <p>해당 자료는 BentoML Blog를 번역한 자료 입니다.
-<a href="https://modelserving.com/blog/deploying-your-own-stable-diffusion-service-mz9wk">원본 자료</a></p>]]></content><author><name>GitHub User</name></author><category term="BentoML" /><summary type="html"><![CDATA[Stable Diffusion은 stability.ai에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.]]></summary></entry></feed>
+원본 자료 <a href="https://modelserving.com/blog/deploying-your-own-stable-diffusion-service-mz9wk">Link</a></p>
+:ET

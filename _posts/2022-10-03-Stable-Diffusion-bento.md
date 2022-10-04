@@ -4,9 +4,6 @@ title:  "나만의 Stable Diffusion 서비스 배포"
 date:   2022-10-03 20:42:00 +0900
 categories: BentoML
 ---
-
-# 나만의 Stable Diffusion 서비스 배포
-
 [Stable Diffusion](https://stability.ai/blog/stable-diffusion-public-release)은 [stability.ai](http://stability.ai/)에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.
 
 ## Stable Diffusion을 왜 Onlie으로 불러오는 것인가?
@@ -198,3 +195,7 @@ bentoctl destroy -f deployment_config.yaml
 # 결론
 
 이 글에서 저희는 BentoML을 사용하여 Stable Diffusion을 위한 production-ready 서비스를 구축하고 AWS EC2에 배포했습니다. AWS EC2에 서비스를 배포함으로써 더 강력한 하드웨어에서 Stable Diffusion 모델을 짧은 지연시간으로 이미지를 생성하고 단일 시스템 이상으로 확장할 수 있었습니다. 이 글을 재미있게 읽었다면 [github의 Bentoml project](https://github.com/bentoml/BentoML)에 ⭐ 와 [slack community](https://l.bentoml.com/join-slack)에서 마음에 맞는 분들을 만나보시길 바랍니다.
+
+# Reference
+해당 자료는 BentoML Blog를 번역한 자료 입니다.
+[원본 자료](https://modelserving.com/blog/deploying-your-own-stable-diffusion-service-mz9wk)

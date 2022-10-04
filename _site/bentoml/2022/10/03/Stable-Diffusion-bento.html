@@ -12,8 +12,8 @@
 <meta property="og:title" content="나만의 Stable Diffusion 서비스 배포">
 <meta name="author" content="GitHub User">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="나만의 Stable Diffusion 서비스 배포">
-<meta property="og:description" content="나만의 Stable Diffusion 서비스 배포">
+<meta name="description" content="Stable Diffusion은 stability.ai에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.">
+<meta property="og:description" content="Stable Diffusion은 stability.ai에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.">
 <link rel="canonical" href="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html">
 <meta property="og:url" content="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html">
 <meta property="og:site_name" content="Lomit tech blog">
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="나만의 Stable Diffusion 서비스 배포">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2022-10-03T20:42:00+09:00","datePublished":"2022-10-03T20:42:00+09:00","description":"나만의 Stable Diffusion 서비스 배포","headline":"나만의 Stable Diffusion 서비스 배포","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"},"url":"http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2022-10-03T20:42:00+09:00","datePublished":"2022-10-03T20:42:00+09:00","description":"Stable Diffusion은 stability.ai에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.","headline":"나만의 Stable Diffusion 서비스 배포","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"},"url":"http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -829,9 +829,7 @@ function googleTranslateElementInit() {
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <h1 id="나만의-stable-diffusion-서비스-배포">나만의 Stable Diffusion 서비스 배포</h1>
-
-<p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
+      <p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
 
 <h2 id="stable-diffusion을-왜-onlie으로-불러오는-것인가">Stable Diffusion을 왜 Onlie으로 불러오는 것인가?</h2>
 
@@ -892,7 +890,7 @@ curl https://s3.us-west-2.amazonaws.com/bentoml.com/stable_diffusion_bentoml/sd_
 
 <h2 id="stable-diffusion-betno-구축">Stable Diffusion Betno 구축</h2>
 
-<p>모델을 RESTful API로써 serve하기 위해 우리는 BentoML service를 만들것입니다. 다음 예제는 예측을 위한 single precision 모델과 <a href="http://service.py">service.py</a> 모듈을 사용하여 비즈니스 로직으로 서비스를 결합합니다. <code class="language-plaintext highlighter-rouge">@svc.api</code> 데코레이션을 활용하여 함수를 APIs로 노출시킬 수 있습니다. 뿐만아니라 input과 output의 type을 지정해줄 수 있습니다. 예를 들어, <code class="language-plaintext highlighter-rouge">txt2img</code> 앤드포인트는 <code class="language-plaintext highlighter-rouge">JSON</code> 을 입력을 받아 <code class="language-plaintext highlighter-rouge">Image</code> 출력을 반환하는 반면 <code class="language-plaintext highlighter-rouge">img2img</code> 앤드포인트는 <code class="language-plaintext highlighter-rouge">Image</code> 와 <code class="language-plaintext highlighter-rouge">JSON</code> 을 입력으로 받아 출력으로 <code class="language-plaintext highlighter-rouge">Image</code> 를 반환합니다.</p>
+<p>모델을 RESTful API로써 serve하기 위해 우리는 BentoML service를 만들것입니다. 다음 예제는 예측을 위한 single precision 모델과 <a href="https://github.com/bentoml/stable-diffusion-bentoml/blob/main/fp32/service.py">service.py</a> 모듈을 사용하여 비즈니스 로직으로 서비스를 결합합니다. <code class="language-plaintext highlighter-rouge">@svc.api</code> 데코레이션을 활용하여 함수를 APIs로 노출시킬 수 있습니다. 뿐만아니라 input과 output의 type을 지정해줄 수 있습니다. 예를 들어, <code class="language-plaintext highlighter-rouge">txt2img</code> 앤드포인트는 <code class="language-plaintext highlighter-rouge">JSON</code> 을 입력을 받아 <code class="language-plaintext highlighter-rouge">Image</code> 출력을 반환하는 반면 <code class="language-plaintext highlighter-rouge">img2img</code> 앤드포인트는 <code class="language-plaintext highlighter-rouge">Image</code> 와 <code class="language-plaintext highlighter-rouge">JSON</code> 을 입력으로 받아 출력으로 <code class="language-plaintext highlighter-rouge">Image</code> 를 반환합니다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">svc</span><span class="p">.</span><span class="n">api</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">JSON</span><span class="p">(),</span> <span class="n">output</span><span class="o">=</span><span class="n">Image</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">txt2img</span><span class="p">(</span><span class="n">input_data</span><span class="p">):</span>
@@ -1007,20 +1005,21 @@ curl https://s3.us-west-2.amazonaws.com/bentoml.com/stable_diffusion_bentoml/sd_
 
 <p>이 글에서 저희는 BentoML을 사용하여 Stable Diffusion을 위한 production-ready 서비스를 구축하고 AWS EC2에 배포했습니다. AWS EC2에 서비스를 배포함으로써 더 강력한 하드웨어에서 Stable Diffusion 모델을 짧은 지연시간으로 이미지를 생성하고 단일 시스템 이상으로 확장할 수 있었습니다. 이 글을 재미있게 읽었다면 <a href="https://github.com/bentoml/BentoML">github의 Bentoml project</a>에 ⭐ 와 <a href="https://l.bentoml.com/join-slack">slack community</a>에서 마음에 맞는 분들을 만나보시길 바랍니다.</p>
 
+<h1 id="reference">Reference</h1>
+<p>해당 자료는 BentoML Blog를 번역한 자료 입니다.
+<a href="https://modelserving.com/blog/deploying-your-own-stable-diffusion-service-mz9wk">원본 자료</a></p>
+
 
     </div>
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/jekyll/2018/12/07/welcome-to-jekyll.html" title="Welcome to Jekyll!">Welcome to Jekyll!</a><span></span>
+<span></span><span></span>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/markdown/2015/02/28/test-markdown.html" title="">Test markdown</a></li>
-<li><a class="post-link" href="/junk/2017/05/20/this-post-demonstrates-post-content-styles.html" title="">This post demonstrates post content styles</a></li>
-<li><a class="post-link" href="/markdown/2017/06/10/quick-mardown-example.html" title="">Quick markdown example</a></li>
-<li><a class="post-link" href="/example/2017/12/18/video-example.html" title="">Video example</a></li>
+        <li><a class="post-link" href="/bentoml/2022/10/03/Stable-Diffusion-bento.html" title="">나만의 Stable Diffusion 서비스 배포</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
