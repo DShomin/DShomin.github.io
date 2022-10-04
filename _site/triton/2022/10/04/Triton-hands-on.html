@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Triton hands-on | Lomit tech blog</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="Triton hands-on">
+<meta name="author" content="GitHub User">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고">
+<meta property="og:description" content="Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고">
+<link rel="canonical" href="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html">
+<meta property="og:url" content="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html">
+<meta property="og:site_name" content="Lomit tech blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-10-04T18:40:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Triton hands-on">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2022-10-04T18:40:00+09:00","datePublished":"2022-10-04T18:40:00+09:00","description":"Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고","headline":"Triton hands-on","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/triton/2022/10/04/Triton-hands-on.html"},"url":"http://localhost:4000/triton/2022/10/04/Triton-hands-on.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lomit tech blog">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Lomit tech blog" src="" onerror="this.style.display='none'">
+  Lomit tech blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Triton hands-on</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-10-04T18:40:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 04, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <blockquote>
+  <p>Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고</p>
+
+</blockquote>
+
+<h2 id="1-pytorch-model-convert">1. PyTorch model convert</h2>
+
+<blockquote>
+  <p>model을 deploy 시 model file framework가 다양하다. 이번 hands-on에서는 PyTorch 관련한 framework를 다룰 예정이다.(torch-script, Onnx, tensorRT)</p>
+
+  <ul>
+    <li>base model</li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hands-on간에 사용하고자 하는 base model 이다.
+
+```python
+from torchvision import models
+
+model = models.wide_resnet101_2(pretrained=True).eval().cuda()
+```
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Torch-script</p>
+
+    <p>torch-script는 pytorch model을 보다 가속화하기 위한 framework로 C++에서도 사용이 가능하다. 보다 자세한 내용은 <a href="https://pytorch.org/docs/stable/jit.html">pytorch 공식 documentation</a>을 참고하는 것이 좋을 것 같다.</p>
+
+    <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="n">script_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">jit</span><span class="p">.</span><span class="n">script</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+  <span class="n">script_model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.pt'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Onnx</p>
+
+    <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="n">input_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"actual_input_1"</span><span class="p">]</span>
+  <span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"output_1"</span><span class="p">]</span>
+  <span class="n">torch</span><span class="p">.</span><span class="n">onnx</span><span class="p">.</span><span class="n">export</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">).</span><span class="n">cuda</span><span class="p">(),</span> <span class="s">'model.onnx'</span><span class="p">,</span>
+                    <span class="n">input_names</span><span class="o">=</span><span class="n">input_names</span><span class="p">,</span> <span class="n">output_names</span><span class="o">=</span><span class="n">output_names</span><span class="p">,</span>
+                    <span class="n">dynamic_axes</span><span class="o">=</span><span class="p">{</span><span class="s">'actual_input_1'</span><span class="p">:{</span><span class="mi">0</span><span class="p">:</span><span class="s">'batch_size'</span><span class="p">},</span> <span class="s">'output_1'</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s">'batch_size'</span><span class="p">}})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>tensorRT</p>
+
+    <p>tensorRT는 Nvidia GPU에 최적화하는 툴로 방법이 크게 두 가지가 있다. (1. trtexec 활용 2. torchtrt 활용)</p>
+
+    <p>📢 주의!! tensorRT는 target이 되는 GPU에서 진행해야 한다.</p>
+
+    <p>나쁜 예) tensorRT 변환은 2080TI에서 진행하고 변환한 파일을 3080TI에서 deploy</p>
+
+    <ol>
+      <li>
+        <p>trtexec</p>
+
+        <blockquote>
+          <p>필자가 직접 환경을 설치하여 tensorRT 변환하는 환경을 만들어 봤지만 많이 어려웠으며 결국 실패하였다. 오기로 시작하였지만 무수한 애러를 보고 컴퓨터에게 졌다… 변환하는 것은 docker를 사용하는 것을 추천하며 아래 docker command를 실행하면 쉽게 변환이 가능하다.</p>
+
+        </blockquote>
+
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> docker run <span class="nt">--gpus</span> <span class="s1">'"device=0"'</span> <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-p</span> 8887:8887 <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/hands_on <span class="o">[</span>nvcr.io/nvidia/pytorch:22.03-py3]<span class="o">(</span>http://nvcr.io/nvidia/pytorch:22.03-py3<span class="o">)</span>
+</code></pre></div>        </div>
+
+        <ul>
+          <li>TensorRT 변환
+            <ul>
+              <li>
+                <p>using trtexec</p>
+
+                <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  trtexec <span class="se">\</span>
+    <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="se">\</span>
+    <span class="nt">--explicitBatch</span> <span class="se">\</span>
+    <span class="nt">--optShapes</span><span class="o">=</span>actual_input_1:16x3x224x224 <span class="se">\</span>
+    <span class="nt">--maxShapes</span><span class="o">=</span>actual_input_1:32x3x224x224 <span class="se">\</span>
+    <span class="nt">--minShapes</span><span class="o">=</span>actual_input_1:1x3x224x224 <span class="se">\</span>
+    <span class="nt">--best</span> <span class="se">\</span>
+    <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="se">\</span>
+    <span class="nt">--workspace</span><span class="o">=</span>4096
+</code></pre></div>                </div>
+
+                <ul>
+                  <li>argument description
+                    <ul>
+                      <li>onnx : model file의 path</li>
+                      <li>explicitBatch</li>
+                      <li>optShapes : 최적화하고자 하는 batch shape</li>
+                      <li>maxShapes : 최대 batch shape</li>
+                      <li>minShapes : 최소 batch shape</li>
+                      <li>best : network의 precision을 결정하는 argument로 default가 best를 활성화한 것이며 –fp16, –int8, –noTF32 와 같다.</li>
+                      <li>saveEngine : tensorRT 변환 후 저장하고자 하는 이름</li>
+                      <li>workspace : 최적화를 위하여 할당하고자 하는 memory size이며 이후 버전 부터 삭제예정</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <hr>
+
+                <ul>
+                  <li>
+                    <p>trtexec dummy test</p>
+
+                    <blockquote>
+                      <p>변환 이후 변환한 tensorRT 파일이 어느정도 성능이 나오는지 한줄 코드로 수행이 가능하다.</p>
+
+                    </blockquote>
+
+                    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="c"># 1. dummy input으로 inference 시간 측정</span>
+  trtexec <span class="nt">--loadEngine</span><span class="o">=</span>model.plan <span class="nt">--dumpOutput</span>
+                    
+  <span class="c"># 2. dummy input으로 layer 별 시간 측정</span>
+  trtexec <span class="nt">--loadEngine</span><span class="o">=</span>model.plan <span class="nt">--dumpProfile</span>
+</code></pre></div>                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>torchtrt libray</p>
+
+                <p>python의 library로 제공되는 방법으로 쉽게 적용할 수 있지만 변환 후 performance는 trtexec 보다 떨어지는 것으로 알려져있다.</p>
+
+                <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="c1">#Optional
+</span>  <span class="kn">import</span> <span class="nn">torch_tensorrt</span> <span class="k">as</span> <span class="n">torchtrt</span>
+                
+  <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">wide_resnet101_2</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="nb">eval</span><span class="p">().</span><span class="n">cuda</span><span class="p">()</span>
+  <span class="c1">#Or you can load torchscript file directly likes
+</span>  <span class="c1">#model = torch.jit.load('ts_model_path')
+</span>                
+  <span class="n">trt_module</span> <span class="o">=</span> <span class="n">torchtrt</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">torchtrt</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span>
+                                  <span class="n">min_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span>
+                                  <span class="n">opt_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span>
+                                  <span class="n">max_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span> <span class="p">)],</span> <span class="n">enabled_precisions</span><span class="o">=</span><span class="p">{</span><span class="n">torch</span><span class="p">.</span><span class="n">half</span><span class="p">})</span>
+                
+  <span class="n">trt_module</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'test.ts'</span><span class="p">)</span>
+</code></pre></div>                </div>
+              </li>
+              <li>
+                <p>summary</p>
+
+                <p>TensorRT는 Nvidia GPU를 활용하여 deploy를 한다면 사용하지 않을 이유가 없을 만큼 최적화를 잘해준다. (network의 precision을 낮추어 조금의 acc 저하는 있지만…) 하지만 변환하면서 문제가 조금씩 있다. 최적화를 지원하지 않는 operation이 있는 경우에는 추가적인 작업이 더 필요하게 된다. 해결할 수 있는 방법으로는 Onnx-Simplifer 라는 tool을 활용하여 해결하는 방법과 직접 cuda 설계하여 최적화하는 방법, torch_tensorrt를 활용하여 변환하는 방법이 있다.</p>
+
+                <ol>
+                  <li>Try <a href="https://github.com/daquexian/onnx-simplifier">Onnx-Simplifier</a> 
+  <code class="language-plaintext highlighter-rouge">python3 -m onnxsim model.onnx simplified_model.onnx</code>
+</li>
+                  <li>
+<a href="https://github.com/NVIDIA/TensorRT">Custom Plugin?</a>, <a href="https://github.com/NVIDIA/TensorRT/tree/master/tools/onnx-graphsurgeon">Onnx-GraphSurgeon?</a>
+</li>
+                  <li>
+                    <p>Use Framework integration version (TF-TRT, Torch-TRT)</p>
+
+                    <p>operation 최적화가 안되는 경우에는 operation을 유지시켜서 변환하는 방법</p>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="2-triton">2. Triton</h2>
+
+<blockquote>
+  <p>앞서 operation 경량화와 최적화를 통해서 만든 model file을 활용하여 inference API를 만드는 것을 도와주는 툴이다.</p>
+
+</blockquote>
+
+<p>TensorRT 변환과 같이 Triton 또한 환경을 만들기 어려우니 NGC에서 제공해주는 Docker를 적극 활용해보자</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--gpus</span><span class="o">=</span><span class="s1">'"device=1"'</span> <span class="nt">--rm</span> <span class="nt">-p8000</span>:8000 <span class="nt">-p8001</span>:8001 <span class="nt">-p8002</span>:8002 <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>/models:/models nvcr.io/nvidia/tritonserver:22.03-py3 tritonserver <span class="nt">--model-repository</span><span class="o">=</span>/models
+</code></pre></div></div>
+
+<p>(주의!! 📢 docker를 build하는 directory에 models 폴더가 있어야한다.)</p>
+
+<ul>
+  <li>
+    <p>models의 directory</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  models
+  ├── onnx_model
+  │   ├── 1
+  │   │   └── model.onnx
+  │   └── config.pbtxt
+  ├── torch_model
+  │   ├── 1
+  │   │   └── model.pt
+  │   └── config.pbtxt
+  └── trt_model
+      ├── 1
+      │   └── model.plan
+      └── config.pbtxt
+</code></pre></div>    </div>
+
+    <p>models 폴더 안에는 제공하고자하는 서비스 이름으로 폴더(onnx_model, torch_model, trt_model)가 있고 그 하위의 폴더는 해당 서비스의 버전 이름이다.(1) 그 하위로는 모델 파일이 들어가있다. pbtxt 확장자 파일은 서비스에 대한 config 정보들이 들어있으며 model file의 종류에 따라서 조금 씩 다르다.</p>
+  </li>
+  <li>
+    <p>using port number</p>
+    <ul>
+      <li>8000 : inference를 위한 http 포트</li>
+      <li>8001 : inference를 위한 grpc 포트</li>
+      <li>
+        <p>8002 : 서비스 운용간에 서비스 현황들을 모니터링 하기 위한  포트(프로메테우스와 연동할 수 있다.)</p>
+
+        <p><img src="/assets/images/triton-handson/Untitled.png" alt="Untitled"></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>위 도커를 실행하게 되면 제공하고자 하는 tritonserver가 실행이 되고 해당 컨테이너가 server로서 활용이 가능하게 된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># optional</span>
+<span class="c"># model의 load하는 형식을 주는 것으로</span>
+<span class="c"># explicit는 service를 on off를 하는 것을 triton에서 올린 이후 가능</span>
+<span class="c"># 권장하는 control mode로 model을 CI/CD를 할때 적절하게 사용할 수 있는 옵션인것으로 생각된다.</span>
+<span class="nt">--model-control-mode</span><span class="o">=</span>explicit
+<span class="c"># curl로 service on</span>
+curl <span class="nt">-X</span> POST localhost:8000/v2/repository/models/onnx_model/load
+</code></pre></div></div>
+
+<p>Triton에서는 들어오는 request queue를 처리하는 방법도 제어가 가능하다.</p>
+
+<ol>
+  <li>
+    <p>Batch scheduler</p>
+
+    <blockquote>
+      <p>request의 batch 수에 따라서 가변적으로 변할 수 있게 하는 것으로 특정 size가 만족이 안되면 특정 시간이 지나면 바로 수행하도록 하는 것으로 해당 옵션은max_queue_delay_microseconds로 제어가 가능하다.</p>
+
+    </blockquote>
+
+    <p><img src="/assets/images/triton-handson/2022-07-22_07-12-56.png" alt="스크린샷, 2022-07-22 07-12-56.png"></p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># 아래 내용을 pdtxt 내용에 포함시키면 실행이 된다.</span>
+ dynamic_batching <span class="o">{</span>
+   preferred_batch_size: <span class="o">[</span> 4, 8, 16, 32 <span class="o">]</span>
+   max_queue_delay_microseconds: 100
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Multiple instances</p>
+
+    <blockquote>
+      <p>여러 개의 instance를 생성 시켜 병렬로 queue들을 처리하는 방법</p>
+
+    </blockquote>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># 아래 내용을 pdtxt 내용에 포함시키면 실행이 된다.</span>
+ instance_group <span class="o">[</span>
+     <span class="o">{</span>
+       count: 1
+       kind: KIND_CPU
+     <span class="o">}</span>
+   <span class="o">]</span>
+</code></pre></div>    </div>
+
+    <p><img src="/assets/images/triton-handson/2022-07-22_07-12-42.png" alt="스크린샷, 2022-07-22 07-12-42.png"></p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>Triton client</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  docker run <span class="nt">-it</span> <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/hands_on <span class="nt">--gpus</span> <span class="s1">'"device=2"'</span> <span class="nt">--net</span><span class="o">=</span>host nvcr.io/nvidia/tritonserver:22.03-py3-sdk
+</code></pre></div>    </div>
+
+    <p>triton client는 도커 이름 뒤에 sdk가 붙는 것이 특징이다.</p>
+
+    <ul>
+      <li>
+        <p>client에서 request 보내기</p>
+
+        <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">tritonclient.http</span> <span class="k">as</span> <span class="n">tritonhttpclient</span>
+  <span class="kn">import</span> <span class="nn">tritonclient.grpc</span> <span class="k">as</span> <span class="n">tritongrpcclient</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+  <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+  <span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
+  <span class="kn">import</span> <span class="nn">json</span>
+        
+  <span class="c1">###CONFIGURATION########
+</span>  <span class="n">VERBOSE</span> <span class="o">=</span> <span class="bp">False</span>
+  <span class="n">input_name</span> <span class="o">=</span> <span class="s">'actual_input_1'</span>
+  <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
+  <span class="n">input_dtype</span> <span class="o">=</span> <span class="s">'FP32'</span>
+  <span class="n">output_name</span> <span class="o">=</span> <span class="s">'output_1'</span>
+  <span class="n">model_name</span> <span class="o">=</span> <span class="s">'trt_model'</span>
+  <span class="n">http_url</span> <span class="o">=</span> <span class="s">'localhost:8000'</span>
+  <span class="n">grpc_url</span> <span class="o">=</span> <span class="s">'localhost:8001'</span>
+  <span class="n">model_version</span> <span class="o">=</span> <span class="s">'1'</span>
+  <span class="c1">########################
+</span>        
+  <span class="c1">#Image Loading
+</span>  <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'./src/goldfish.jpg'</span><span class="p">)</span>
+        
+  <span class="n">imagenet_mean</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">]</span>
+  <span class="n">imagenet_std</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">]</span>
+        
+  <span class="n">resize</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+  <span class="n">center_crop</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+  <span class="n">to_tensor</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">()</span>
+  <span class="n">normalize</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">imagenet_mean</span><span class="p">,</span>
+                                   <span class="n">std</span><span class="o">=</span><span class="n">imagenet_std</span><span class="p">)</span>
+        
+  <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">resize</span><span class="p">,</span> <span class="n">center_crop</span><span class="p">,</span> <span class="n">to_tensor</span><span class="p">,</span> <span class="n">normalize</span><span class="p">])</span>
+  <span class="n">image_tensor</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">image</span><span class="p">).</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">cuda</span><span class="p">()</span>
+        
+  <span class="c1">#Label Loading
+</span>        
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./src/imagenet-simple-labels.json'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+      <span class="n">labels</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+        
+  <span class="c1">#Start client set up
+</span>        
+  <span class="c1">#triton_client = tritonhttpclient.InferenceServerClient(url=http_url, verbose=VERBOSE)
+</span>  <span class="n">triton_client</span> <span class="o">=</span> <span class="n">tritongrpcclient</span><span class="p">.</span><span class="n">InferenceServerClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">grpc_url</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">VERBOSE</span><span class="p">)</span>
+  <span class="n">model_metadata</span> <span class="o">=</span> <span class="n">triton_client</span><span class="p">.</span><span class="n">get_model_metadata</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model_version</span><span class="o">=</span><span class="n">model_version</span><span class="p">)</span> <span class="c1">#You can remove this line
+</span>  <span class="n">model_config</span> <span class="o">=</span> <span class="n">triton_client</span><span class="p">.</span><span class="n">get_model_config</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model_version</span><span class="o">=</span><span class="n">model_version</span><span class="p">)</span>
+        
+  <span class="n">image_numpy</span> <span class="o">=</span> <span class="n">image_tensor</span><span class="p">.</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">image_numpy</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+        
+  <span class="c1">#input0 = tritonhttpclient.InferInput(input_name, input_shape, input_dtype)
+</span>  <span class="n">input0</span> <span class="o">=</span> <span class="n">tritongrpcclient</span><span class="p">.</span><span class="n">InferInput</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span> <span class="n">input_dtype</span><span class="p">)</span>
+  <span class="c1">#input0.set_data_from_numpy(image_numpy, binary_data=False)
+</span>  <span class="n">input0</span><span class="p">.</span><span class="n">set_data_from_numpy</span><span class="p">(</span><span class="n">image_numpy</span><span class="p">)</span>
+        
+  <span class="c1">#output = tritonhttpclient.InferRequestedOutput(output_name, binary_data=False)
+</span>  <span class="n">output</span> <span class="o">=</span> <span class="n">tritongrpcclient</span><span class="p">.</span><span class="n">InferRequestedOutput</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">triton_client</span><span class="p">.</span><span class="n">infer</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model_version</span><span class="o">=</span><span class="n">model_version</span><span class="p">,</span> 
+                                 <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input0</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+  <span class="n">logits</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">as_numpy</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+  <span class="n">logits</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+        
+  <span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)])</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/bentoml/2022/10/03/Stable-Diffusion-bento.html" title="나만의 Stable Diffusion 서비스 배포">나만의 Stable Diffusion 서비스 배포</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/triton/2022/10/04/Triton-hands-on.html" title="">Triton hands-on</a></li>
+<li><a class="post-link" href="/bentoml/2022/10/03/Stable-Diffusion-bento.html" title="">나만의 Stable Diffusion 서비스 배포</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2022 GitHub User</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
