@@ -6,9 +6,9 @@ categories: BentoML
 ---
 [Stable Diffusion](https://stability.ai/blog/stable-diffusion-public-release)은 [stability.ai](http://stability.ai/)에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.
 
-## Stable Diffusion을 왜 Onlie으로 불러오는 것인가?
+## Stable Diffusion을 왜 Online으로 불러오는 것인가?
 
-제한적인 local 컴퓨터에서 Stable Diffusion 모델이 좋은 품질의 이미지를 생성하기 위해 오랜 시간이 필요합니다. 모델을 온라인 클라우드 서비스에서 실행하게 된다면 사실상 제한없는 컴퓨터 자원을 사용할 수 있게 되어 높은 품질의 결과물을 보다 빠르게 얻을 수 있습니다. 모델을 다른 창의적인 애플리케이션과 함께 Micropservice로 호스팅하면 [ML 모델을 온라인으로 실행하는 복잡성](https://modelserving.com/blog/why-do-people-say-its-so-hard-to-deploy-a-ml-model-to-production)을 처리할 필요 없이 모델의 힘을 더 쉽게 활용할 수 있습니다.
+제한적인 local 컴퓨터에서 Stable Diffusion 모델이 좋은 품질의 이미지를 생성하기 위해 오랜 시간이 필요합니다. 모델을 온라인 클라우드 서비스에서 실행하게 된다면 사실상 제한없는 컴퓨터 자원을 사용할 수 있게 되어 높은 품질의 결과물을 보다 빠르게 얻을 수 있습니다. Microservice 단위로 모델을 호스팅하면 [ML 모델을 온라인에서 실행해야하는 복잡한 절차](https://modelserving.com/blog/why-do-people-say-its-so-hard-to-deploy-a-ml-model-to-production) 없이 모델 성능을 레버리지 할 수 있고 보다 창의적인 애플리케이션을 제작할 수 있습니다.
 
 ## Stable Diffusion을 EC2에서 배포
 
