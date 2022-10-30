@@ -4,6 +4,38 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/utils/2022/10/30/tmux.html</loc>
+        
+        <lastmod>2022-10-30T05:40:00-04:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html</loc>
+        
+        <lastmod>2022-10-25T05:40:00-04:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/triton/2022/10/04/Triton-hands-on.html</loc>
         
         <lastmod>2022-10-04T05:40:00-04:00</lastmod>

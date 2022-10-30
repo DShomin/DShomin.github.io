@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>MLops is all you need? | Lomit tech blog</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="MLops is all you need?">
+<meta name="author" content="GitHub User">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="What is MLOps?? :warning: 필자의 개인적인 의견이 많은 내용으로 유의바람">
+<meta property="og:description" content="What is MLOps?? :warning: 필자의 개인적인 의견이 많은 내용으로 유의바람">
+<link rel="canonical" href="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html">
+<meta property="og:url" content="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html">
+<meta property="og:site_name" content="Lomit tech blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-10-25T05:40:00-04:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="MLops is all you need?">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2022-10-25T05:40:00-04:00","datePublished":"2022-10-25T05:40:00-04:00","description":"What is MLOps?? :warning: 필자의 개인적인 의견이 많은 내용으로 유의바람","headline":"MLops is all you need?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html"},"url":"http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lomit tech blog">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Lomit tech blog" src="" onerror="this.style.display='none'">
+  Lomit tech blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">MLops is all you need?</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-10-25T05:40:00-04:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 25, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h1 id="what-is-mlops">What is MLOps??</h1>
+<p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">필자의 개인적인 의견이 많은 내용으로 유의바람</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled.png" alt="MLOps = ML + Dev + Ops">
+MLOps = ML + Dev + Ops</p>
+
+<p>많은 사람들이 MLops에 대한 이해를 ML + Devops라고 정의한다. 이보다 명확한 설명이 Wikipedia에 있다.</p>
+
+<blockquote>
+  <p><strong>MLOps</strong> or <strong>ML Ops</strong> is a set of practices that aims to <strong>deploy and maintain</strong> <a href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a> models in production reliably and efficiently.</p>
+
+</blockquote>
+
+<p>해석하자면 MLOps는 머신 러닝 모델을 안정적이고 효율적으로 배치하고 유지하는 것을 목표로 하는 일련의 관행이다. 여기서 중요하게 생각해야하는 것은 <strong>안정적, 효율적, 배치, 유지</strong> 이다.</p>
+
+<h2 id="why-to-study-mlops">Why to study MLOps??</h2>
+<h3 id="ml-competition">ML competition</h3>
+
+<p>필자는 kaggle과 dacon, 머신러닝 경진대회를 통해서 모델링과 ML문제들을 풀었다.</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%201.png" alt="kaggle"></p>
+
+<!-- kaggle -->
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%202.png" alt="dacon"></p>
+
+<!-- dacon -->
+
+<p>경진대회를 통해 여러 공부들을 많이 했지만 <strong>“real world에서 발생하는 문제들을 내가 직접 해결할 수 있을까??”</strong></p>
+
+<p>에 대해서 고민하였을 때 스스로에게 부족함을 많이 느꼈다. 그 이유는 경진대회에서는 이미 준비가 되어 있는 것이 많다. 그 예로 두 가지가 있는데</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%203.png" alt="Untitled"></p>
+
+<ul>
+  <li>데이터셋 (물론 train / test 데이터 셋을 분류해서 제공해줌)</li>
+  <li>정의되어 있는 metrics</li>
+</ul>
+
+<p>Test 데이터 셋과 metrics는 프로젝트의 이정표와 같다. 제공해야하는 서비스의 방향성과 설정한 Test 데이터 셋과 metrics가 설정된다면 프로젝트 기간과 resource들을 낭비가 일어날 수 밖에 없다.</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%204.png" alt="이정표"></p>
+
+<!-- 이정표 -->
+
+<h3 id="ml-서비스-개발을-위한-절차">ML 서비스 개발을 위한 절차</h3>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%205.png" alt="데이터 확보 부터 배포까지"></p>
+
+<!-- 데이터 확보 부터 배포까지 -->
+
+<p>ML 서비스가 나오기 위해서는 복잡한 절차를 통해서 나오는 것이지만 간단하게 표현하자면 <strong>데이터 수집 → 데이터 처리 → 모델 개발 → 서비스 배포</strong> 절차로 진행된다.(기획, 서비스 관리 등 복잡하고 어려운 것들이 많다.) 많은 ML competition 플랫폼들과 많은 ML 개발자, 학생들도 모델 개발에 많은 집중을 한다. 하지만 이 부분은 ML 서비스를 만들기 위해 극히 일부분에 해당한다.</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%206.png" alt="UC Berkely 졸업생 대상 설문 조사 결과"></p>
+
+<!-- UC Berkely 졸업생 대상 설문 조사 결과 -->
+
+<p>위는 트위터를 통해 UC Berkely 졸업생 대상으로 ML service를 만들때 어렵다고 생각하는 Task가 무엇인지 설문한 것이다. 졸업생들은 <strong>Model training</strong>은 어렵지 않게 진행할 수 있다고 답변하였으며 나머지에 대해서는 대부분 어렵다고 답변하였다. 특히 <strong>Model monitoring, Model maintenance and retraing</strong>은 매우 어렵다고 답변하고 있다. 그 이유를 생각해보자면 해당 Task로 구성되어 있는 수업이 흔하지 않다는 것이 가장 큰 이유일 것 같다.</p>
+
+<p>(이중 설문 결과가 특이한 Task가 Data labeling이다. 다른 Task에 비해 결과의 분산량이 크다. 이는 설문자 별로 생각하는 Data labeling이 서로 달라 발생하는 결과인 것 같다. 예를 들자면 단순한 노동으로 생각하는 설문자도 있으며 라벨링 또한 어렵고 복잡한 Task라고 평가하는 설문자들도 있는 것으로 생각된다.)</p>
+
+<h2 id="how-to-build-mlops">How to build MLops</h2>
+
+<h3 id="google에서의-ml-service">Google에서의 ML service</h3>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%207.png" alt="**[Hidden Technical Debt in Machine Learning Systems](https://papers.neurips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)(google) 2015**"></p>
+
+<p><strong><a href="https://papers.neurips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf">Hidden Technical Debt in Machine Learning Systems</a>(google) 2015</strong></p>
+
+<p>구글에서는 ML service를 만들때 ML code는 전체 시스템에서 가장 작은 부분을 차지한다고 평가하고 있다. 심지어 구글에서 발표한 논문 제목을 머신러닝을 숨겨진 부체라고 표현하고 있다. 논문 내용에서는 Machine learning system은 데이터 종속적인 점을 중심으로 다양한 문제점들을 기술하고 있다. 그럴만한게 머신러닝 모델은 데이터로 부터 생성되는 부산물로써 좋지 않은 데이터에서는 좋지 않는 머신러닝 모델이 나오는 것은 당연하다.</p>
+
+<h3 id="data-dependencies-system">Data d<strong>**ependencies system</strong>**</h3>
+
+<p>Machine learning으로 서비스를 제공하기 이전과 이후를 비교한다면 아래와 같다.</p>
+
+<ul>
+  <li>ML system이 있기 이전에는 어떤 것이 필요했을까? (Software 1.0)
+    <ul>
+      <li>computing</li>
+      <li>code + algorithm</li>
+    </ul>
+  </li>
+  <li>ML system 도입을 위해 필요한 것은? (Software 2.0)
+    <ul>
+      <li>computing</li>
+      <li>code + algorithm = model</li>
+      <li><strong>Data</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Software 1.0과 Software 2.0의 차이는 Data라고 볼 수 있다. 물론 Software 1.0에서도 Data를 활용하였지만 Software 2.0에서 데이터를 활용하여 모델을 만들거나 알고리즘을 만들만큼 중요한 요소로 적용되지 않았을 것으로 예상된다. 이에 Software2.0으로 넘어오면서 부족한 요소일 것이며 중요한 요소가 될 것으로 예상된다.</p>
+
+<h3 id="real-world-ml-service-데이터의-기여도">real-world ML service 데이터의 기여도</h3>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%208.png" alt="안드레이 카파시(테슬라 AI 해더)의 잃어버린 잠의 양"></p>
+
+<!-- 안드레이 카파시(테슬라 AI 해더)의 잃어버린 잠의 양 -->
+
+<p>안드레이가 박사시절과 테슬라 시절에 잠을 빼앗긴 양을 표현한 차트입니다. 박사시절에는 모델과 알고리즘을 손봐야하는 일이 많았지만 이에 반해 실무에서는 데이터를 손봐야하는 일이 많아졌다고 한다.</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%209.png" alt="Data quality vs Model quality (Andrew ng)"></p>
+
+<!-- Data quality vs Model quality (Andrew ng) -->
+
+<p>데이터 품질을 올리면 어떤 효과를 볼 수 있는지 나타낸 이미지로 model로 성능을 증진시키는 것 보다 더 많은 증진을 이뤄낸 것을 볼 수 있다.</p>
+
+<p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2010.png" alt="Data-Centric AI competition(Andrew ng)"></p>
+
+<!-- Data-Centric AI competition(Andrew ng) -->
+
+<p>이에 앤드류 응 교수님은 기존의 model centric competition이 아닌 data centric comeptition을 계최하였다.</p>
+
+<h3 id="data-handling-of-tesla">Data handling of Tesla</h3>
+
+<p>데이터를 활용하여 극적인 성능으로 머신러닝 서비스를 제공하고 있는 기업으로 테슬라가 있다고 생각한다. 그렇다면 테슬라에서는 어떤 방법으로 Data centric ML service를 제공하는지 알아보자</p>
+
+<ul>
+  <li>
+    <p>bicycle object detection</p>
+
+    <p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2011.png" alt="(figure 1.) 서비스 제공 이전 테슬라의 데이터 샘플"></p>
+
+    <p>(figure 1.) 서비스 제공 이전 테슬라의 데이터 샘플</p>
+
+    <p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2012.png" alt="(figure 2.)데이터 샘플 라벨링 결과물"></p>
+
+    <p>(figure 2.)데이터 샘플 라벨링 결과물</p>
+
+    <p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2013.png" alt="(figure 3.)서비스 중 발생한 데이터 추론 결과"></p>
+
+    <p>(figure 3.)서비스 중 발생한 데이터 추론 결과</p>
+
+    <p>일반적인 상황의 데이터들은 (figure 1.)과 같았을 것이고 데이터 라벨링 또한 (figure 2.)과 같이 진행했을 것이다. 하지만 만약 (figure 3.)과 같은 데이터가 들어오게 된다면 어떻게 될까?? 자율주행 차량의 알고리즘은 서로 다른 객체로 인식하여 차량 앞에는 자전거가 있어 급정거 혹은 브레이크 이상작동으로 서비스의 품질이 떨어져 이를 해결하기 위해 fleet learning을 고안해냈다.</p>
+  </li>
+  <li>
+    <p>fleet learning</p>
+
+    <p>![(figure 4.) 서비스 중에 발생하는 데이터](/assets/images/MLOps-is-all-you-need/Untitled%2014.png “”)
+  (figure 4.) 서비스 중에 발생하는 데이터</p>
+
+    <p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2015.png" alt="(figure 5.) 넓은 영역에서 데이터가 발생">
+  (figure 5.) 넓은 영역에서 데이터가 발생</p>
+
+    <p><img src="/assets/images/MLOps-is-all-you-need/Untitled%2016.png" alt="(figure 6.) fleet learning architecture ">
+  (figure 6.) fleet learning architecture</p>
+
+    <p>테슬라는 자전거로 의해 발생하는 브레이크 오작동을 해결하기 위해 실제 서비스중에 발생하는 데이터를 수집하여 관리하여 이를 해결하였다.</p>
+
+    <p>fleet learning에 대해서 간단하게 알아보자면 아래와 같은 순서로 작동한다.(figure 6.)</p>
+
+    <ol>
+      <li>Data source(테슬라 사용자들의 차량들을 지칭)에서 부정확한 결과를 trigger로 전달
+        <ul>
+          <li>예를 들면 자율주행 모드를 사용자가 껐다.</li>
+        </ul>
+      </li>
+      <li>unit test로 실제 찾고자하는 경우의 데이터인지 판단
+        <ul>
+          <li>unit test를 예를 들자면 위와 같이 자전거와 차량을 같은 객체라고 인식하지 않는 경우를 차량의 bounding box와 자전거의 bounding box가 서로 overlap되어 있는 상황(필자의 추측)</li>
+        </ul>
+      </li>
+      <li>찾고자하는 경우인 데이터라고 하면 Boost를 통해 사용자에게 데이터 사용허가를 받아 데이터 셋을 수집 및 라벨링을 진행</li>
+      <li>추가된 데이터셋을 활용하여 다시 재학습</li>
+      <li>재학습된 모델을 Data source에 deploy</li>
+    </ol>
+
+    <p>Fleet learning으로 생성되는 데이터는 Large Dataset(figure 5.), Varied dataset(figure 4.), Real dataset(figure 4.) 특징이 있어 서비스에 적합한 데이터셋을 얻을 수 있다.</p>
+
+    <ul>
+      <li>Large dataset</li>
+      <li>Varied dataset</li>
+      <li>Real dataset</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="reference">Reference</h2>
+
+<p><a href="https://karpathy.medium.com/software-2-0-a64152b37c35">Software 2.0</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=FnFksQo-yEY&t=1069s">How AI Powers Self-Driving Tesla with Elon Musk and Andrej Karpathy</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=06-AZXmwHjo&t=419s">A Chat with Andrew on MLOps: From Model-centric to Data-centric AI</a></p>
+
+<h1 id="글을-마치며">글을 마치며</h1>
+
+<h2 id="ml-system-도입을-위해-필요한-것은-software-20">ML system 도입을 위해 필요한 것은? (Software 2.0)</h2>
+
+<ul>
+  <li>computing</li>
+  <li>code + algorithm = model</li>
+  <li><strong>Data</strong></li>
+  <li>(필자가 중요하게 생각하는 것)
+    <ul>
+      <li>Issue tracking</li>
+      <li>data drift</li>
+      <li>model uncertainty</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="필자의-궁금증">필자의 궁금증</h2>
+
+<ul>
+  <li>
+    <p>과연 MLOps는 ML로 무언가를 만드는 사람들이라면 모두 필요한 것인가?? (MLOps is all you need??)</p>
+
+    <p>기업에서 MLOps 도입을 위해서는 전사적 협조가 필요해 보인다. 그리하여 작은 비용으로 쉽게 적용할 수 있는 것은 아니라고 보인다.</p>
+
+    <p>모두가 MLOps를 도입해야하는 것이냐고 생각해보면 그런것 같지는 않은 것 같다. 이를 분류할 수 있는 기준은 ML 모델이 얼마나 자주 기업에서 제공하는 서비스에 관여하냐에 따라 나눠질 것 같다. 조금 더 쉽게 표현하자면 ML 모델이 반복적으로 inference를 하냐 하지않냐에 따라 분류될 수 있을 것 같다.</p>
+  </li>
+  <li>
+    <p>decision cost는??</p>
+
+    <p>ML 서비스를 안정적으로 배포하고 유지하려면 많은 비용들이 발생할 것으로 보인다. 그로 인해 기업에서는 ML 서비스로 도입하였을 때 얻을 수 있는 가치와 불안정성에 의한 Cost는 계산이 필요해 보인다.</p>
+
+    <p>어떠한 Task에 어떤 Decision을 내리냐에 따라서 부과되는 cost는 매우 다를 것이라고 생각된다. <strong>얼마나 가치 있는 일</strong>을 혹은 <strong>반복적인 일</strong>인지에 따라서 얻을 수 있는 가치가 평가가 필요하며 잘못된 Decision으로 발생하는 비용는 ML 서비스 기획 부터 운용관리 때까지 지속적으로 평가해야할 것으로 보여 ML 모델에 대한 모니터링이 필요해 보인다.</p>
+  </li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/triton/2022/10/04/Triton-hands-on.html" title="Triton hands-on">Triton hands-on</a><a class="next" href="/utils/2022/10/30/tmux.html" title="Terminal의 마술사 tmux">Terminal의 마술사 tmux</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/triton/2022/10/04/Triton-hands-on.html" title="Terminal의 마술사 tmux">Triton hands-on</a></li>
+<li><a class="post-link" href="/mlops/2022/10/25/MLops-is-all-you-need.html" title="Terminal의 마술사 tmux">MLops is all you need?</a></li>
+<li><a class="post-link" href="/utils/2022/10/30/tmux.html" title="Terminal의 마술사 tmux">Terminal의 마술사 tmux</a></li>
+<li><a class="post-link" href="/bentoml/2022/10/03/Stable-Diffusion-bento.html" title="Terminal의 마술사 tmux">나만의 Stable Diffusion 서비스 배포</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2022 GitHub User</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
