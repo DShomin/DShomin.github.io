@@ -130,7 +130,7 @@ docker:
 bentoml build
 ```
 
-🎉Stable Diffusion bento가 구축되었습니다. 어떠 이유로 bento를 성공적으로 만들 수 없었다면 걱정하지 마세요 아래 명령어를 이용하여 사전 제작된 bento를 다운로드 할 수 있습니다.
+🎉Stable Diffusion bento가 구축되었습니다. 만약 bento를 성공적으로 만들 수 없었다면 걱정하지 마세요 아래 명령어를 이용하여 사전 제작된 bento를 다운로드 할 수 있습니다.
 
 **Download Single Precision (FP32) Stable Diffusion Bento**
 

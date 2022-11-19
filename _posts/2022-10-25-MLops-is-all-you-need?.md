@@ -6,7 +6,7 @@ categories: MLops
 ---
 
 # What is MLOps??
-:warning: 필자의 개인적인 의견이 많은 내용으로 유의바람
+⚠️  필자의 개인적인 의견이 많은 내용으로 유의바람
 
 ![MLOps = ML + Dev + Ops](/assets/images/MLOps-is-all-you-need/Untitled.png)
 MLOps = ML + Dev + Ops
@@ -72,7 +72,7 @@ ML 서비스가 나오기 위해서는 복잡한 절차를 통해서 나오는 �
 
 구글에서는 ML service를 만들때 ML code는 전체 시스템에서 가장 작은 부분을 차지한다고 평가하고 있다. 심지어 구글에서 발표한 논문 제목을 머신러닝을 숨겨진 부체라고 표현하고 있다. 논문 내용에서는 Machine learning system은 데이터 종속적인 점을 중심으로 다양한 문제점들을 기술하고 있다. 그럴만한게 머신러닝 모델은 데이터로 부터 생성되는 부산물로써 좋지 않은 데이터에서는 좋지 않는 머신러닝 모델이 나오는 것은 당연하다.
 
-### Data d****ependencies system****
+### Data dependencies system
 
 Machine learning으로 서비스를 제공하기 이전과 이후를 비교한다면 아래와 같다.
 
@@ -129,7 +129,7 @@ Software 1.0과 Software 2.0의 차이는 Data라고 볼 수 있다. 물론 Soft
 
 - fleet learning
     
-    ![(figure 4.) 서비스 중에 발생하는 데이터](/assets/images/MLOps-is-all-you-need/Untitled%2014.png "")
+    ![(figure 4.) 서비스 중에 발생하는 데이터](/assets/images/MLOps-is-all-you-need/Untitled%2014.png)
     (figure 4.) 서비스 중에 발생하는 데이터
     
     
@@ -167,9 +167,9 @@ Software 1.0과 Software 2.0의 차이는 Data라고 볼 수 있다. 물론 Soft
 
 [A Chat with Andrew on MLOps: From Model-centric to Data-centric AI](https://www.youtube.com/watch?v=06-AZXmwHjo&t=419s)
 
-# 글을 마치며
+## Closing Thought
 
-## ML system 도입을 위해 필요한 것은? (Software 2.0)
+### ML system 도입을 위해 필요한 것은? (Software 2.0)
 
 - computing
 - code + algorithm = model
@@ -180,7 +180,7 @@ Software 1.0과 Software 2.0의 차이는 Data라고 볼 수 있다. 물론 Soft
     - model uncertainty
     
 
-## 필자의 궁금증
+### 필자의 궁금증
 
 - 과연 MLOps는 ML로 무언가를 만드는 사람들이라면 모두 필요한 것인가?? (MLOps is all you need??)
     
