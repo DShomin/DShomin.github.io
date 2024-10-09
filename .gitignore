@@ -1,3 +1,4 @@
 *.webm
 **/.DS_Store
 .DS_Store
+.jekyll-cache/Jekyll/Cache/**

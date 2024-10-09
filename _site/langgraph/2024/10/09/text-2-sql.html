@@ -7,21 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>About | Lomit tech blog</title>
+<title>Text-2-SQL 모델 소개 | Lomit tech blog</title>
 <meta name="generator" content="Jekyll v4.2.2">
-<meta property="og:title" content="About">
+<meta property="og:title" content="Text-2-SQL 모델 소개">
 <meta name="author" content="GitHub User">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="http://localhost:4000/about.html">
-<meta property="og:url" content="http://localhost:4000/about.html">
+<meta name="description" content="What is Text-2-SQL?">
+<meta property="og:description" content="What is Text-2-SQL?">
+<link rel="canonical" href="http://localhost:4000/langgraph/2024/10/09/text-2-sql.html">
+<meta property="og:url" content="http://localhost:4000/langgraph/2024/10/09/text-2-sql.html">
 <meta property="og:site_name" content="Lomit tech blog">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-10-09T20:42:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="About">
+<meta property="twitter:title" content="Text-2-SQL 모델 소개">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"GitHub User"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"About","url":"http://localhost:4000/about.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2024-10-09T20:42:00+09:00","datePublished":"2024-10-09T20:42:00+09:00","description":"What is Text-2-SQL?","headline":"Text-2-SQL 모델 소개","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/langgraph/2024/10/09/text-2-sql.html"},"url":"http://localhost:4000/langgraph/2024/10/09/text-2-sql.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -780,110 +781,101 @@ function googleTranslateElementInit() {
 
 
 
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Text-2-SQL 모델 소개</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2024-10-09T20:42:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 09, 2024
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+  </p></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <h2>About Homin Lee</h2>
+      <h2 id="what-is-text-2-sql">What is Text-2-SQL?</h2>
 
-<h2>Youtube Video</h2>
-<p>
-    <a href="https://www.youtube.com/watch?v=Sumdbc3e3rM&list=LL&index=11&t=9s">[인터뷰] 캐글로 성장한 AI
-        Engineer 이호민 - 메달 획득
-        후기</a><br>
-</p>
+<p>Text-2-SQL은 자연어로 입력된 텍스트를 SQL 쿼리로 변환하는 기술입니다. 사용자가 데이터베이스 구조나 SQL 언어에 대한 지식 없이도, 원하는 질문을 텍스트로 표현하면 이를 자동으로 SQL 쿼리로 변환하여 데이터를 조회할 수 있게 합니다.</p>
 
-<p>
-    <a href="https://www.youtube.com/watch?v=utGCWYGDvbo&list=LL&index=5&t=485s">북미테크 스터디 Anomalib 발표
-    </a><br>
-</p>
+<h2 id="why-do-we-need-text-2-sql-model">Why do we need Text-2-SQL model?</h2>
 
+<p>기업과 조직의 중요한 데이터는 대부분 데이터베이스에 저장되어 있으며, 이 데이터를 기반으로 빠른 의사결정과 분석이 필요합니다. 하지만 SQL을 자유롭게 사용할 수 있는 인력은 제한적이기 때문에, 데이터 분석이나 보고서를 작성하는 데 많은 리소스와 시간이 소요됩니다. Text-2-SQL 모델을 도입하면, 비전문가도 자연어로 데이터베이스에서 직접 정보를 조회할 수 있어 데이터 분석가나 엔지니어의 도움 없이도 실시간으로 정보를 얻고, 신속한 의사결정이 가능해집니다.</p>
 
+<h2 id="technologies-used-in-text-2-sql-implementation">Technologies Used in Text-2-SQL Implementation</h2>
 
-<h2>Published Papers</h2>
+<p><code class="language-plaintext highlighter-rouge">#Langgraph</code> <code class="language-plaintext highlighter-rouge">#Postgres</code> <code class="language-plaintext highlighter-rouge">#Docker</code> <code class="language-plaintext highlighter-rouge">#Plotly</code></p>
 
-<h3>Improved U-Net++ with Patch Split for Micro-Defect Inspection in Silk Screen Printing</h3>
-<p>
-    <a href="https://www.mdpi.com/2076-3417/12/9/4679">Paper Link</a><br>
-    Published: MDPI · May 6, 2022
-</p>
+<p>Text-2-SQL 구현을 위해 다양한 기술이 사용됩니다. 예를 들어, CSV로 제공된 데이터를 <code class="language-plaintext highlighter-rouge">#Postgres</code> 데이터베이스에 <code class="language-plaintext highlighter-rouge">#Docker</code>를 통해 배포하고, <code class="language-plaintext highlighter-rouge">#Langgraph</code>를 이용하여 사용자의 의도를 분석합니다. 이 과정에서 관련 테이블과 컬럼을 자동으로 추출하여 SQL 쿼리를 생성합니다. 생성된 SQL은 사용자가 원하는 데이터 조회와 검증 절차를 거쳐 최종 결과를 확인할 수 있도록 하며, 데이터 시각화가 필요한 경우 <code class="language-plaintext highlighter-rouge">#Plotly</code>를 활용하여 시각적인 정보도 제공합니다.</p>
 
-<h3>A Data-Centric Approach to Design and Analysis of a Surface-Inspection System Based on Deep Learning in the Plastic
-    Injection Molding Industry</h3>
-<p>
-    <a href="https://www.mdpi.com/2227-9717/9/11/1895">Paper Link</a><br>
-    Published: MDPI · October 23, 2021
-</p>
+<p><img src="/assets/images/text_2_sql/Langgraph.png" alt="graph"></p>
 
-<h3>Development of Machine Learning Model for Diagnostic Disease Prediction Based on Laboratory Tests</h3>
-<p>
-    <a href="https://protocolexchange.researchsquare.com/article/pex-1429/v1">Paper Link</a><br>
+<h2 id="demo-영상">Demo 영상</h2>
+<p>데모 영상은 아래와 같다.
+<img src="/assets/images/text_2_sql/output.gif" alt="demo"></p>
 
-    Published: Nature Scientific Reports · April 16, 2021
-</p>
+<h2 id="whats-next">What’s next?</h2>
 
-<h2>🏁Competitions</h2>
-
-<h3>A.I.D.D 2021(Artificial Intelligence Diabetes Datathon 2021)</h3>
-<p>
-    Development of predictive laryngeal cancer incidence models. Rank-2nd place<br>
-    Published: Korea University Medicine · March 2021
-</p>
-
-<h3>Sleep AI challenge - SNUH</h3>
-<p>
-    Development of predictive laryngeal cancer incidence models. Rank-2nd place<br>
-    Published: SNUH(SEOUL NATIONAL UNIVERSITY HOSPITAL) · February 2021
-</p>
-
-<h3>Sleep AI challenge - SNUH</h3>
-<p>
-    Classification of sleep status. Rank-1st placeClassification of sleep status. Rank-1st place<br>
-    Published: SNUH(SEOUL NATIONAL UNIVERSITY HOSPITAL) · February 2021
-</p>
-
-<h3>Silver Medal (Top 4%), University of Liverpool - Ion switching</h3>
-<p>
-    University of Liverpool - Ion Switching (79/2618 4%), <a href="https://www.kaggle.com/competitions/liverpool-ion-switching">Kaggle Competition</a> <br>
-    Published: Kaggle · May 2020
-</p>
-
-<h3>건양대 Health Datathon 2020</h3>
-<p>
-    Breast cancer pathology imaging cancer classification. Rank-3rd place<br>
-    Published: Konyang University · April 2020
-</p>
-
-<h3>Bengali.AI Handwritten Grapheme Classification</h3>
-<p>
-    Bengali.AI Handwritten Grapheme Classification (196/2059 10%), <a href="https://www.kaggle.com/competitions/bengaliai-cv19">Kaggle Competition</a><br>
-    Published: Kaggle · March 2020
-</p>
-
-<h3>건양대 Health Datathon 2019 </h3>
-<p>
-    Classification of eye diseases (macular degeneration, diabetic retinopathy, retinal vein obstruction, normal)
-    Rank-2nd place
-    <br>
-    Published: Konyang University · October 2019
-</p>
-
-<h3>Freesound Audio Tagging 2019 </h3>
-<p>
-    Freesound Audio Tagging 2019 (73/418 9%), <a href="https://www.kaggle.com/competitions/freesound-audio-tagging-2019">Kaggle Competition</a><br>
-    Published: Kaggle · June 2019
-</p>
-<h3>iMet Collection 2019 - FGVC6 </h3>
-<p>
-    iMet Collection 2019 - FGVC6 (67/442 13%), <a href="https://www.kaggle.com/competitions/imet-2019-fgvc6">Kaggle
-        Competition</a><br>
-    Published: Kaggle · May 2019
-</p>
+<ol>
+  <li>Table와 Column prompt에 대한 최적화
+ 현재 Langgraph의 prompt에는 Table과 Column 설명이 포함되어 있지만, 이는 불필요한 토큰 사용을 초래할 수 있으며, 성능 효율성도 떨어질 수 있습니다. 이를 해결하기 위해 RAG(Retrieval-Augmented Generation) 방식을 도입할 수 있습니다. RAG는 필요한 정보만 선택적으로 불러오고 사용하기 때문에, 훨씬 더 효율적이고 정확한 SQL 쿼리를 생성할 수 있도록 합니다. 이 접근법은 필요한 데이터베이스 메타데이터만을 효과적으로 검색하고, 이를 기반으로 SQL 쿼리를 생성하여 성능을 최적화할 수 있습니다.</li>
+  <li>데이터 분석 Agent 추가
+ 데이터 분석의 첫 단계는 데이터 전처리입니다. Text-2-SQL 모델에 데이터 전처리 관련 도구들을 통합하여, Agent가 스스로 데이터 정제와 변환을 수행할 수 있는 기능을 추가할 계획입니다. 이를 통해 사용자가 원하는 의사결정 정보와 인사이트를 더욱 정확하게 제공할 수 있게 되며, 모델이 데이터의 품질을 관리함으로써 최종 분석 결과의 신뢰성도 향상됩니다. 이 기능은 의사결정 속도와 품질을 동시에 높이는 데 기여할 것입니다.</li>
+  <li>다중 Agent를 제어하는 Supervisor Agent 추가
+ 현재 모델은 단일 Agent로 작동하며, 모든 작업을 수행합니다. 그러나 이를 확장하여 다중 Agent를 제어하는 Supervisor Agent를 추가할 계획입니다. 이를 통해 모델이 복잡한 작업을 더욱 효과적으로 처리할 수 있으며, 각 Agent가 자체적으로 작업을 수행하면서 더욱 빠르고 정확한 결과를 제공할 수 있습니다. 이는 모델의 확장성과 성능을 향상시키는 데 큰 도움이 될 것입니다.</li>
+</ol>
 
 
     </div>
 
 </article>
+<div class="post-nav">
+<a class="previous" href="/utils/2022/10/30/tmux.html" title="Terminal의 마술사 tmux">Terminal의 마술사 tmux</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/mlops/2022/10/25/MLops-is-all-you-need.html" title="">MLops is all you need?</a></li>
+<li><a class="post-link" href="/triton/2022/10/04/Triton-hands-on.html" title="">Triton hands-on</a></li>
+<li><a class="post-link" href="/utils/2022/10/30/tmux.html" title="">Terminal의 마술사 tmux</a></li>
+<li><a class="post-link" href="/bentoml/2022/10/03/Stable-Diffusion-bento.html" title="">나만의 Stable Diffusion 서비스 배포</a></li>
+</ul>
+    </div>
 <div class="post-comments"></div></section>
 </div>
 

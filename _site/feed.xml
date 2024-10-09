@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-19T12:27:54-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Lomit tech blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">Terminal의 마술사 tmux</title><link href="http://localhost:4000/utils/2022/10/30/tmux.html" rel="alternate" type="text/html" title="Terminal의 마술사 tmux" /><published>2022-10-30T05:40:00-04:00</published><updated>2022-10-30T05:40:00-04:00</updated><id>http://localhost:4000/utils/2022/10/30/tmux</id><content type="html" xml:base="http://localhost:4000/utils/2022/10/30/tmux.html"><![CDATA[<h2 id="what-is-tmux">what is tmux??</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-10T00:26:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Lomit tech blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">Text-2-SQL 모델 소개</title><link href="http://localhost:4000/langgraph/2024/10/09/text-2-sql.html" rel="alternate" type="text/html" title="Text-2-SQL 모델 소개" /><published>2024-10-09T20:42:00+09:00</published><updated>2024-10-09T20:42:00+09:00</updated><id>http://localhost:4000/langgraph/2024/10/09/text-2-sql</id><content type="html" xml:base="http://localhost:4000/langgraph/2024/10/09/text-2-sql.html"><![CDATA[<h2 id="what-is-text-2-sql">What is Text-2-SQL?</h2>
+
+<p>Text-2-SQL은 자연어로 입력된 텍스트를 SQL 쿼리로 변환하는 기술입니다. 사용자가 데이터베이스 구조나 SQL 언어에 대한 지식 없이도, 원하는 질문을 텍스트로 표현하면 이를 자동으로 SQL 쿼리로 변환하여 데이터를 조회할 수 있게 합니다.</p>
+
+<h2 id="why-do-we-need-text-2-sql-model">Why do we need Text-2-SQL model?</h2>
+
+<p>기업과 조직의 중요한 데이터는 대부분 데이터베이스에 저장되어 있으며, 이 데이터를 기반으로 빠른 의사결정과 분석이 필요합니다. 하지만 SQL을 자유롭게 사용할 수 있는 인력은 제한적이기 때문에, 데이터 분석이나 보고서를 작성하는 데 많은 리소스와 시간이 소요됩니다. Text-2-SQL 모델을 도입하면, 비전문가도 자연어로 데이터베이스에서 직접 정보를 조회할 수 있어 데이터 분석가나 엔지니어의 도움 없이도 실시간으로 정보를 얻고, 신속한 의사결정이 가능해집니다.</p>
+
+<h2 id="technologies-used-in-text-2-sql-implementation">Technologies Used in Text-2-SQL Implementation</h2>
+
+<p><code class="language-plaintext highlighter-rouge">#Langgraph</code> <code class="language-plaintext highlighter-rouge">#Postgres</code> <code class="language-plaintext highlighter-rouge">#Docker</code> <code class="language-plaintext highlighter-rouge">#Plotly</code></p>
+
+<p>Text-2-SQL 구현을 위해 다양한 기술이 사용됩니다. 예를 들어, CSV로 제공된 데이터를 <code class="language-plaintext highlighter-rouge">#Postgres</code> 데이터베이스에 <code class="language-plaintext highlighter-rouge">#Docker</code>를 통해 배포하고, <code class="language-plaintext highlighter-rouge">#Langgraph</code>를 이용하여 사용자의 의도를 분석합니다. 이 과정에서 관련 테이블과 컬럼을 자동으로 추출하여 SQL 쿼리를 생성합니다. 생성된 SQL은 사용자가 원하는 데이터 조회와 검증 절차를 거쳐 최종 결과를 확인할 수 있도록 하며, 데이터 시각화가 필요한 경우 <code class="language-plaintext highlighter-rouge">#Plotly</code>를 활용하여 시각적인 정보도 제공합니다.</p>
+
+<p><img src="/assets/images/text_2_sql/Langgraph.png" alt="graph" /></p>
+
+<h2 id="demo-영상">Demo 영상</h2>
+<p>데모 영상은 아래와 같다.
+<img src="/assets/images/text_2_sql/output.gif" alt="demo" /></p>
+
+<h2 id="whats-next">What’s next?</h2>
+
+<ol>
+  <li>Table와 Column prompt에 대한 최적화
+ 현재 Langgraph의 prompt에는 Table과 Column 설명이 포함되어 있지만, 이는 불필요한 토큰 사용을 초래할 수 있으며, 성능 효율성도 떨어질 수 있습니다. 이를 해결하기 위해 RAG(Retrieval-Augmented Generation) 방식을 도입할 수 있습니다. RAG는 필요한 정보만 선택적으로 불러오고 사용하기 때문에, 훨씬 더 효율적이고 정확한 SQL 쿼리를 생성할 수 있도록 합니다. 이 접근법은 필요한 데이터베이스 메타데이터만을 효과적으로 검색하고, 이를 기반으로 SQL 쿼리를 생성하여 성능을 최적화할 수 있습니다.</li>
+  <li>데이터 분석 Agent 추가
+ 데이터 분석의 첫 단계는 데이터 전처리입니다. Text-2-SQL 모델에 데이터 전처리 관련 도구들을 통합하여, Agent가 스스로 데이터 정제와 변환을 수행할 수 있는 기능을 추가할 계획입니다. 이를 통해 사용자가 원하는 의사결정 정보와 인사이트를 더욱 정확하게 제공할 수 있게 되며, 모델이 데이터의 품질을 관리함으로써 최종 분석 결과의 신뢰성도 향상됩니다. 이 기능은 의사결정 속도와 품질을 동시에 높이는 데 기여할 것입니다.</li>
+  <li>다중 Agent를 제어하는 Supervisor Agent 추가
+ 현재 모델은 단일 Agent로 작동하며, 모든 작업을 수행합니다. 그러나 이를 확장하여 다중 Agent를 제어하는 Supervisor Agent를 추가할 계획입니다. 이를 통해 모델이 복잡한 작업을 더욱 효과적으로 처리할 수 있으며, 각 Agent가 자체적으로 작업을 수행하면서 더욱 빠르고 정확한 결과를 제공할 수 있습니다. 이는 모델의 확장성과 성능을 향상시키는 데 큰 도움이 될 것입니다.</li>
+</ol>]]></content><author><name>GitHub User</name></author><category term="Langgraph" /><summary type="html"><![CDATA[What is Text-2-SQL?]]></summary></entry><entry><title type="html">Terminal의 마술사 tmux</title><link href="http://localhost:4000/utils/2022/10/30/tmux.html" rel="alternate" type="text/html" title="Terminal의 마술사 tmux" /><published>2022-10-30T18:40:00+09:00</published><updated>2022-10-30T18:40:00+09:00</updated><id>http://localhost:4000/utils/2022/10/30/tmux</id><content type="html" xml:base="http://localhost:4000/utils/2022/10/30/tmux.html"><![CDATA[<h2 id="what-is-tmux">what is tmux??</h2>
 
 <p>SSH 접속하여 프로그램을 구동시키는 황경에서 ssh 접속이 끊어지면 프로그램이 같이 종료되는 것을 경험 해보았을 것이다. 이러한 현상의 대처법으로 nohup이라는 것을 이용하여 해당 프로그램을 백그라운드로 구동시키는 방법이 있지만 tmux를 이용하여 세션을 따로 할당하여 프로그램을 구동시키는 방법도 있다. 이외에 tmux에서 제공하는 멀티윈도우 기능이 터미널 작업에서 유용하게 사용하니 같이 공부해보자</p>
 
@@ -60,7 +89,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tmux at <span class="nt">-t</span> &lt;session-name&gt;
 </code></pre></div></div>
 
-<p><img src="/assets/images/tmux/2021_03_03_16_52_00.gif" alt="/assets/images/tmux/_2021_03_03_16_52_00.gif" /></p>]]></content><author><name>GitHub User</name></author><category term="Utils" /><summary type="html"><![CDATA[what is tmux??]]></summary></entry><entry><title type="html">MLops is all you need?</title><link href="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html" rel="alternate" type="text/html" title="MLops is all you need?" /><published>2022-10-25T05:40:00-04:00</published><updated>2022-10-25T05:40:00-04:00</updated><id>http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need</id><content type="html" xml:base="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html"><![CDATA[<h1 id="what-is-mlops">What is MLOps??</h1>
+<p><img src="/assets/images/tmux/2021_03_03_16_52_00.gif" alt="/assets/images/tmux/_2021_03_03_16_52_00.gif" /></p>]]></content><author><name>GitHub User</name></author><category term="Utils" /><summary type="html"><![CDATA[what is tmux??]]></summary></entry><entry><title type="html">MLops is all you need?</title><link href="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html" rel="alternate" type="text/html" title="MLops is all you need?" /><published>2022-10-25T18:40:00+09:00</published><updated>2022-10-25T18:40:00+09:00</updated><id>http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need</id><content type="html" xml:base="http://localhost:4000/mlops/2022/10/25/MLops-is-all-you-need.html"><![CDATA[<h1 id="what-is-mlops">What is MLOps??</h1>
 <p>⚠️  필자의 개인적인 의견이 많은 내용으로 유의바람</p>
 
 <p><img src="/assets/images/MLOps-is-all-you-need/Untitled.png" alt="MLOps = ML + Dev + Ops" />
@@ -279,7 +308,7 @@ MLOps = ML + Dev + Ops</p>
 
     <p>어떠한 Task에 어떤 Decision을 내리냐에 따라서 부과되는 cost는 매우 다를 것이라고 생각된다. <strong>얼마나 가치 있는 일</strong>을 혹은 <strong>반복적인 일</strong>인지에 따라서 얻을 수 있는 가치가 평가가 필요하며 잘못된 Decision으로 발생하는 비용는 ML 서비스 기획 부터 운용관리 때까지 지속적으로 평가해야할 것으로 보여 ML 모델에 대한 모니터링이 필요해 보인다.</p>
   </li>
-</ul>]]></content><author><name>GitHub User</name></author><category term="MLops" /><summary type="html"><![CDATA[What is MLOps?? ⚠️ 필자의 개인적인 의견이 많은 내용으로 유의바람]]></summary></entry><entry><title type="html">Triton hands-on</title><link href="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html" rel="alternate" type="text/html" title="Triton hands-on" /><published>2022-10-04T05:40:00-04:00</published><updated>2022-10-04T05:40:00-04:00</updated><id>http://localhost:4000/triton/2022/10/04/Triton-hands-on</id><content type="html" xml:base="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html"><![CDATA[<blockquote>
+</ul>]]></content><author><name>GitHub User</name></author><category term="MLops" /><summary type="html"><![CDATA[What is MLOps?? ⚠️ 필자의 개인적인 의견이 많은 내용으로 유의바람]]></summary></entry><entry><title type="html">Triton hands-on</title><link href="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html" rel="alternate" type="text/html" title="Triton hands-on" /><published>2022-10-04T18:40:00+09:00</published><updated>2022-10-04T18:40:00+09:00</updated><id>http://localhost:4000/triton/2022/10/04/Triton-hands-on</id><content type="html" xml:base="http://localhost:4000/triton/2022/10/04/Triton-hands-on.html"><![CDATA[<blockquote>
   <p>Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고</p>
 
 </blockquote>
@@ -620,7 +649,7 @@ curl <span class="nt">-X</span> POST localhost:8000/v2/repository/models/onnx_mo
       </li>
     </ul>
   </li>
-</ul>]]></content><author><name>GitHub User</name></author><category term="triton" /><summary type="html"><![CDATA[Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고]]></summary></entry><entry><title type="html">나만의 Stable Diffusion 서비스 배포</title><link href="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html" rel="alternate" type="text/html" title="나만의 Stable Diffusion 서비스 배포" /><published>2022-10-03T07:42:00-04:00</published><updated>2022-10-03T07:42:00-04:00</updated><id>http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento</id><content type="html" xml:base="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"><![CDATA[<p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
+</ul>]]></content><author><name>GitHub User</name></author><category term="triton" /><summary type="html"><![CDATA[Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고]]></summary></entry><entry><title type="html">나만의 Stable Diffusion 서비스 배포</title><link href="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html" rel="alternate" type="text/html" title="나만의 Stable Diffusion 서비스 배포" /><published>2022-10-03T20:42:00+09:00</published><updated>2022-10-03T20:42:00+09:00</updated><id>http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento</id><content type="html" xml:base="http://localhost:4000/bentoml/2022/10/03/Stable-Diffusion-bento.html"><![CDATA[<p><a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a>은 <a href="http://stability.ai/">stability.ai</a>에서 출시한 text-to-image model 오픈소스 입니다. Stable Diffusion은 자연어 프롬프트로 부터 단 몇초만에 창의적인 예술품을 생성할 수 있습니다.</p>
 
 <h2 id="stable-diffusion을-왜-online으로-불러오는-것인가">Stable Diffusion을 왜 Online으로 불러오는 것인가?</h2>
 
