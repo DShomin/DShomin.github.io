@@ -3,6 +3,7 @@ layout: post
 title:  "AI challenge solution"
 date:   2022-11-01 20:42:00 +0900
 categories: Competition
+tags: Competition AI Classification DataAnalysis MachineLearning
 ---
 
 # AI challenge solution
@@ -133,7 +134,7 @@ Under sampling
 
 - **Method(방법론)**
     - 원본 데이터의 0HZ부터 5120HZ 까지 feature를 Decomposition 기법인 Truncated SVD, ICA를 통해 축소하여 하나의 feature에서 가지는 정보량이 원본 데이터보다 크게 하였다.
-    - 김승일, “진동 데이터의 시간영역 특징 추출에 기반한 고장 분류 모델” 을 참고하여 신호의 실효치를 나타내는 RMS와 impulse factor를 추가하였다.
+    - 김승일, "진동 데이터의 시간영역 특징 추출에 기반한 고장 분류 모델" 을 참고하여 신호의 실효치를 나타내는 RMS와 impulse factor를 추가하였다.
 
         ![Untitled](/assets/images/AI_challenge/Untitled%209.png)
         

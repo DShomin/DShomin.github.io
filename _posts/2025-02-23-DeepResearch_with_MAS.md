@@ -3,7 +3,7 @@ layout: post
 title:  "Deep Research와 멀티 에이전트 시스템의 최신 동향"
 date:   2025-02-23 20:42:00 +0900
 categories: LLM AI Research MultiAgent
-tags: LLM DeepResearch MultiAgentSystem AI-Research
+tags: LLM AI-Research MultiAgentSystem DeepResearch AI
 ---
 
 # Deep Research와 멀티 에이전트 시스템의 최신 동향

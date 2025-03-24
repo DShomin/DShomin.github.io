@@ -3,6 +3,7 @@ layout: post
 title:  "MLops is all you need?"
 date:   2022-10-25 18:40:00 +0900
 categories: MLops
+tags: MLops DevOps DataScience ModelDeployment ML
 ---
 
 # What is MLOps??
@@ -13,7 +14,7 @@ MLOps = ML + Dev + Ops
 
 많은 사람들이 MLops에 대한 이해를 ML + Devops라고 정의한다. 이보다 명확한 설명이 Wikipedia에 있다. 
 
-> **MLOps** or **ML Ops** is a set of practices that aims to **deploy and maintain** [machine learning](https://en.wikipedia.org/wiki/Machine_learning) models in production reliably and efficiently.
+> **MLOps** or **ML Ops** is a set of practices that aims to **deploy and maintain** [machine learning](https://en.wikipedia.org/wiki/Machine_learning) models in production reliably and efficiently.
 > 
 
 해석하자면 MLOps는 머신 러닝 모델을 안정적이고 효율적으로 배치하고 유지하는 것을 목표로 하는 일련의 관행이다. 여기서 중요하게 생각해야하는 것은 **안정적, 효율적, 배치, 유지** 이다.
@@ -31,7 +32,7 @@ MLOps = ML + Dev + Ops
 
 <!-- dacon -->
 
-경진대회를 통해 여러 공부들을 많이 했지만 **“real world에서 발생하는 문제들을 내가 직접 해결할 수 있을까??”**
+경진대회를 통해 여러 공부들을 많이 했지만 **"real world에서 발생하는 문제들을 내가 직접 해결할 수 있을까??"**
 
 에 대해서 고민하였을 때 스스로에게 부족함을 많이 느꼈다. 그 이유는 경진대회에서는 이미 준비가 되어 있는 것이 많다. 그 예로 두 가지가 있는데
 

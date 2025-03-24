@@ -3,6 +3,7 @@ layout: post
 title:  "Triton hands-on"
 date:   2022-10-04 18:40:00 +0900
 categories: triton
+tags: Triton ModelServing NVIDIA TensorRT Inference
 ---
 
 > Triton은 Nvidia에서 제공하는 Deploy open-source로 request, response로 제공하는 서비스에 대해 다양한 기능들을 제공한다.(model version 관리, service performance test, service batch scheduler and so on) 본 내용은 Nvidia 측에서 만들어주신 자료 기반으로 작성되었습니다. 해당 내용은 https://github.com/leejinho610/TRT_Triton_HandsOn 를 참고
@@ -79,7 +80,7 @@ categories: triton
                     - optShapes : 최적화하고자 하는 batch shape
                     - maxShapes : 최대 batch shape
                     - minShapes : 최소 batch shape
-                    - best : network의 precision을 결정하는 argument로 default가 best를 활성화한 것이며 --fp16, --int8, --noTF32 와 같다.
+                    - best : network의 precision을 결정하는 argument로 default가 best를 활성화한 것이며 --fp16, --int8, --noTF32 와 같다.
                     - saveEngine : tensorRT 변환 후 저장하고자 하는 이름
                     - workspace : 최적화를 위하여 할당하고자 하는 memory size이며 이후 버전 부터 삭제예정
                 
@@ -123,9 +124,9 @@ categories: triton
                 
                 TensorRT는 Nvidia GPU를 활용하여 deploy를 한다면 사용하지 않을 이유가 없을 만큼 최적화를 잘해준다. (network의 precision을 낮추어 조금의 acc 저하는 있지만…) 하지만 변환하면서 문제가 조금씩 있다. 최적화를 지원하지 않는 operation이 있는 경우에는 추가적인 작업이 더 필요하게 된다. 해결할 수 있는 방법으로는 Onnx-Simplifer 라는 tool을 활용하여 해결하는 방법과 직접 cuda 설계하여 최적화하는 방법, torch_tensorrt를 활용하여 변환하는 방법이 있다.
                 
-                1. Try [Onnx-Simplifier](https://github.com/daquexian/onnx-simplifier) 
+                1. Try [Onnx-Simplifier](https://github.com/daquexian/onnx-simplifier)
                 `python3 -m onnxsim model.onnx simplified_model.onnx`
-                2. [Custom Plugin?](https://github.com/NVIDIA/TensorRT), [Onnx-GraphSurgeon?](https://github.com/NVIDIA/TensorRT/tree/master/tools/onnx-graphsurgeon)
+                2. [Custom Plugin?](https://github.com/NVIDIA/TensorRT), [Onnx-GraphSurgeon?](https://github.com/NVIDIA/TensorRT/tree/master/tools/onnx-graphsurgeon)
                 3. Use Framework integration version (TF-TRT, Torch-TRT)
                     
                     operation 최적화가 안되는 경우에는 operation을 유지시켜서 변환하는 방법
