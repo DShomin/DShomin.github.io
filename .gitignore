@@ -2,5 +2,11 @@
 **/.DS_Store
 .DS_Store
 .jekyll-cache/Jekyll/Cache/**
+_site/*
 
-_site/
+# Jekyll generated files
+_site/*html
+
+/.jekyll-cache/
+/.jekyll-metadata
+
