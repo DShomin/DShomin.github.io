@@ -129,3 +129,8 @@ Langgraph CLI는 개발 환경뿐만 아니라 Langgraph 애플리케이션 배�
 
 ## 결론
 Langgraph Studio와 langgraph-cli는 LLM 에이전트 개발을 위한 강력한 도구입니다. 시각적인 워크플로우 표현, 강력한 디버깅 기능, 편리한 배포 옵션을 통해 개발 생산성을 향상시키고 더 나은 LLM 애플리케이션을 만들 수 있도록 지원합니다.
+
+## 참고 자료
+- [Langgraph Studio 공식 영상](https://www.youtube.com/watch?v=o9CT5ohRHzY)
+- [Langgraph cli documentation](https://langchain-ai.github.io/langgraph/cloud/reference/cli/#configuration-file)
+- [LangGraph Server documentation](https://langchain-ai.github.io/langgraph/concepts/langgraph_server/)
