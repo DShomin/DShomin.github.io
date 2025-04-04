@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weights & Biases Meet-up 후기: LLM 평가와 금융 예측의 미래 (내용 복원 및 사견 분리)"
+title:  "Weights & Biases Meet-up 후기"
 date:   2025-04-04 15:48:00 +0900
 categories: LLM Review
 tags: LLM Review Meetup AI Evaluation Financial Forecasting
