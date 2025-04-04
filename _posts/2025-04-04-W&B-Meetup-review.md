@@ -8,7 +8,7 @@ tags: LLM Review Meetup AI Evaluation Financial Forecasting
 
 
 > Weights & Biases에서 주최한 Meet-up에 참석하여 공유된 주요 내용과 함께 개인적으로 감명 깊었던 점, 들었던 생각들을 분리하여 기록하고 공유합니다. 
----
+
 <p>
     <img src="/assets/images/W&B-Meetup-review/Pasted image 20250404121458.png" alt>
     <em>Meetup 포스터</em>
