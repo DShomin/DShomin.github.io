@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Multi-Agent System 설계: 직렬 vs 병렬 구조의 선택 기준"
-date:   2025-07-11 20:42:00 +0900
+date:   2025-07-11 18:50:00 +0900
 categories: LLM AI Research MultiAgent
 tags: MultiAgentSystem LLM AI-Agent Cognition Anthropic LangChain Architecture
 ---
